@@ -1,0 +1,57 @@
+ion-header{
+    ion-toolbar{
+        --background:#2b2b31;
+    }
+
+    ion-searchbar{
+        margin-top: 48px;
+        transform: scale(0.9);
+        width: 78%;
+        margin-left: 23px;
+        padding-bottom: 15px;
+        --background: black;
+        color: white;
+    
+    }
+
+    .back{
+        position: absolute;
+        left: 10px;
+        font-size: 25px;
+        top: 55%;
+        color: white;
+    }
+
+    .search{
+        position: absolute;
+        right: 20px;
+        top: 57%;
+        color: white;
+        font-size: 14px;
+    }
+
+
+    @media screen and (max-width: 320px) {
+        .search{
+            right: 15px;
+            font-size: 12px;
+        }
+      }
+}
+
+
+ion-content{
+    --background: #2b2b31;
+
+    ion-label{
+        color:white;
+    }
+
+    ion-item{
+        --background-color: transparent;
+    }
+
+    ion-list{
+        --background: transparent;
+    }
+  }

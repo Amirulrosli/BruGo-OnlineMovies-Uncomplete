@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-searchbar (click)="goToSearch()" placeholder="search for movies..."></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="content__head">
+			
+    <div class="container">
+
+      
+      <div class="row">
+        <div class="col-12" style="background: black; padding-bottom:18px;">
+
+          <h2 class="content__title" style="font-size: 18px; margin-bottom: 5px;">Recommended For You</h2>
+
+          <ion-slides [options]="slideOptsFour">
+            <ion-slide class="page-slide" *ngFor="let data of allMovieData">
+              <ion-card class="card-1" routerLink="/movie/{{data.id}}">
+        
+                <img class="story-1" src="{{data.pagecover}}"/>
+        
+              </ion-card>
+            </ion-slide>
+          </ion-slides>
+          <!-- end content mobile tabs nav -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <section class="content__head">
+		<div class="container">
+			<div class="row">
+				<!-- section title -->
+				<div class="col-12" style="padding-top: 0px;">
+					<h2 class="section__title" style="font-size: 18px;">My Library</h2>
+				</div>
+				<!-- end section title -->
+
+				<!-- card -->
+				<div class="col-6 col-sm-4 col-lg-3 col-xl-2" *ngFor="let data of allMovieData">
+					<div class="card">
+						<div class="card__cover">
+							<img src="{{data.pagecover}}" alt="">
+							<a routerLink="/movie/{{data.id}}" class="card__play">
+								<i class="icon ion-ios-play"></i>
+							</a>
+						</div>
+						<div class="card__content">
+							<h3 class="card__title"><a routerLink="/movie/{{data.id}}">{{data.title}}</a></h3>
+							<span class="card__category">
+								<a routerLink="/movie/{{data.id}}">{{data.genre}}</a>
+							</span>
+							<span class="card__rate"><i class="icon ion-ios-star"></i>{{data.rate}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+</ion-content>

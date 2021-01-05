@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-searchbar (click)="goToSearch()" placeholder="search for movies..."></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-title class="content_title">Explore</ion-title>
+  <div class="movie" *ngFor="let data of explore" routerLink="/movie/{{data.id}}">
+
+    <ion-card>
+      <ion-item lines="none">
+        <ion-icon name="star"></ion-icon>
+        <ion-label class="rate">{{data.rate}}/10</ion-label>
+      </ion-item>
+      <img src="{{data.homecover}}"/>  
+    </ion-card>
+
+    <ion-label class="label" style="margin-top:10px;">{{data.title}} </ion-label>
+
+  </div>
+  
+
+</ion-content>

@@ -1,0 +1,568 @@
+<ion-header >
+
+
+	
+						
+							<!-- header logo -->
+							<a routerLink="/tabs/home" class="logo" >
+								<img src="assets/brugo.png" alt="">
+							</a>
+							<!-- end header logo -->
+
+							<!-- header nav -->
+						
+
+							<!-- header auth -->
+							<div class="header__auth">
+								<button class="icon1 header__search-btn" type="button" (click)="goToSearch()">
+									<i class="ion-ios-search"></i>
+								</button>
+
+								<a href="signin.html" class="icon header__sign-in">
+									<i class="ion-ios-log-in"></i>
+									<span>Log out</span>
+								</a>
+							</div>
+							<!-- end header auth -->
+							
+
+
+
+
+</ion-header>
+
+<ion-content (ionScroll)="onScroll($event)">
+	  <!-- home -->
+	  <section class="home this-home">
+		<!-- home bg -->
+
+		<ion-slides [options]="slideOptsOne" pager="true">
+			<ion-slide *ngFor="let data of newMovie">
+				<img class="item home-cover" src="{{data.homecover}}"/>
+				<ion-button routerLink="/movie/{{data.id}}" class="play_button">Play</ion-button>
+			</ion-slide>
+		</ion-slides>
+	
+	  </section>
+	
+  <section class="content">
+
+		<div class="content__head">
+			
+			<div class="container">
+
+				
+				<div class="row">
+					<div class="col-12">
+
+						<h2 class="content__title" style="font-size: 18px; margin-bottom: 5px;">Free For You</h2>
+
+						<ion-slides [options]="slideOptsFour">
+							<ion-slide class="page-slide" *ngFor="let data of allMovieData">
+								<ion-card class="card-1" routerLink="/movie/{{data.id}}">
+					
+									<img class="story-1" src="{{data.pagecover}}"/>
+					
+								</ion-card>
+							</ion-slide>
+						</ion-slides>
+						
+
+						<h2 class="content__title" style="font-size: 20px;">Trailer</h2>
+
+						<div scrollX="true" id="scroll">
+							<ion-slides [options]="slideOptsThree">
+								<ion-slide *ngFor="let data of allMovieData">
+									<ion-card class="card-story" (click)="gotoTrailer(data.id)">
+
+										<img class="story" src="{{data.pagecover}}"/>
+
+									</ion-card>
+								</ion-slide>
+							</ion-slides>
+							
+						</div>
+					
+						<!-- content title -->
+						<h2 class="content__title" style="font-size: 20px;">New Movies</h2>
+						<!-- end content title -->
+
+						<!-- content tabs nav -->
+						<ul class="nav nav-tabs content__tabs" id="content__tabs" role="tablist">
+							<li class="nav-item">
+								<a class="nav-link active" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">NEW RELEASES</a>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">MOVIES</a>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false">TV SHOW</a>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false">CARTOONS</a>
+							</li>
+						</ul>
+						<!-- end content tabs nav -->
+
+						<!-- content mobile tabs nav -->
+						<div class="content__mobile-tabs" id="content__mobile-tabs">
+							<div class="content__mobile-tabs-btn dropdown-toggle" role="navigation" id="mobile-tabs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<input type="button" value="{{content}}">
+								<span></span>
+							</div>
+
+							<div class="content__mobile-tabs-menu dropdown-menu" aria-labelledby="mobile-tabs">
+								<ul class="nav nav-tabs" role="tablist">
+									<li class="nav-item"><a class="nav-link active" id="1-tab" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true" (click)="tabs(release)">NEW RELEASES</a></li>
+
+									<li class="nav-item"><a class="nav-link" id="2-tab" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false" (click)="tabs(move)">MOVIES</a></li>
+
+									<li class="nav-item"><a class="nav-link" id="3-tab" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false" (click)="tabs(series)">TV SERIES</a></li>
+
+									<li class="nav-item"><a class="nav-link" id="4-tab" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false" (click)="tabs(cartoons)">CARTOONS</a></li>
+								</ul>
+							</div>
+						</div>
+						<!-- end content mobile tabs nav -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<!-- content tabs -->
+			<div class="tab-content" id="myTabContent">
+				<div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="1-tab">
+					<div class="row">
+						<!-- card -->
+						<div class="col-6 col-sm-12 col-lg-6"  *ngFor="let data of newMovie">
+							<div class="card card--list">
+								<div class="row">
+									<div class="col-12 col-sm-4">
+										<div class="card__cover">
+											<img src="{{data.pagecover}}" alt="">
+											<a routerLink="/movie/{{data.id}}" class="card__play">
+												<i class="icon ion-ios-play"></i>
+											</a>
+										</div>
+									</div>
+
+									<div class="col-12 col-sm-8">
+										<div class="card__content">
+											<h3 class="card__title"><a routerLink="/movie/{{data.id}}">{{data.title}}</a></h3>
+											<span class="card__category">
+												<a routerLink="/movie/{{data.id}}">{{data.genre}}</a>
+											</span>
+
+											<div class="card__wrap">
+												<span class="card__rate"><i class="icon ion-ios-star"></i>{{data.rate}}</span>
+
+												<ul class="card__list">
+													<li>HD</li>
+													<li>16+</li>
+												</ul>
+											</div>
+
+											<div class="card__description">
+												<p>{{data.description}}</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- end card -->
+					</div>
+				</div>
+
+				<div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="2-tab">
+					<div class="row" *ngFor="let data of moviesData">
+						<!-- card -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card">
+								<div class="card__cover">
+									<img src="{{data.pagecover}}" alt="">
+									<a routerLink="/movie/{{data.id}}" class="card__play">
+										<i class="icon ion-ios-play"></i>
+									</a>
+								</div>
+								<div class="card__content">
+									<h3 class="card__title"><a routerLink="/movie/{{data.id}}">{{data.title}}</a></h3>
+									<span class="card__category">
+										<a routerLink="/movie/{{data.id}}">{{data.genre}}</a>
+									</span>
+									<span class="card__rate"><i class="icon ion-ios-star"></i>{{data.rate}}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="tab-pane fade" id="tab-3" role="tabpanel" aria-labelledby="3-tab">
+					<div class="row">
+						<!-- card -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card">
+								<div class="card__cover">
+									<img src="assets/covers/cover2.jpg" alt="">
+									<a href="#" class="card__play">
+										<i class="icon ion-ios-play"></i>
+									</a>
+								</div>
+								<div class="card__content">
+									<h3 class="card__title"><a href="#">I Dream in Another Language</a></h3>
+									<span class="card__category">
+										<a href="#">Action</a>
+										<a href="#">Triler</a>
+									</span>
+									<span class="card__rate"><i class="icon ion-ios-star"></i>8.4</span>
+								</div>
+							</div>
+						</div>
+						<!-- end card -->
+
+						<!-- card -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card">
+								<div class="card__cover">
+									<img src="assets/covers/cover.jpg" alt="">
+									<a href="#" class="card__play">
+										<i class="icon ion-ios-play"></i>
+									</a>
+								</div>
+								<div class="card__content">
+									<h3 class="card__title"><a href="#">Benched</a></h3>
+									<span class="card__category">
+										<a href="#">Comedy</a>
+									</span>
+									<span class="card__rate"><i class="icon ion-ios-star"></i>7.1</span>
+								</div>
+							</div>
+						</div>
+						<!-- end card -->
+
+						<!-- card -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card">
+								<div class="card__cover">
+									<img src="assets/covers/cover4.jpg" alt="">
+									<a href="#" class="card__play">
+										<i class="icon ion-ios-play"></i>
+									</a>
+								</div>
+								<div class="card__content">
+									<h3 class="card__title"><a href="#">Whitney</a></h3>
+									<span class="card__category">
+										<a href="#">Romance</a>
+										<a href="#">Drama</a>
+										<a href="#">Music</a>
+									</span>
+									<span class="card__rate"><i class="icon ion-ios-star"></i>6.3</span>
+								</div>
+							</div>
+						</div>
+						<!-- end card -->
+
+						<!-- card -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card">
+								<div class="card__cover">
+									<img src="assets/covers/cover3.jpg" alt="">
+									<a href="#" class="card__play">
+										<i class="icon ion-ios-play"></i>
+									</a>
+								</div>
+								<div class="card__content">
+									<h3 class="card__title"><a href="#">Blindspotting</a></h3>
+									<span class="card__category">
+										<a href="#">Comedy</a>
+										<a href="#">Drama</a>
+									</span>
+									<span class="card__rate"><i class="icon ion-ios-star"></i>7.9</span>
+								</div>
+							</div>
+						</div>
+						<!-- end card -->
+
+						<!-- card -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card">
+								<div class="card__cover">
+									<img src="assets/covers/cover6.jpg" alt="">
+									<a href="#" class="card__play">
+										<i class="icon ion-ios-play"></i>
+									</a>
+								</div>
+								<div class="card__content">
+									<h3 class="card__title"><a href="#">I Dream in Another Language</a></h3>
+									<span class="card__category">
+										<a href="#">Action</a>
+										<a href="#">Triler</a>
+									</span>
+									<span class="card__rate"><i class="icon ion-ios-star"></i>8.4</span>
+								</div>
+							</div>
+						</div>
+						<!-- end card -->
+
+						<!-- card -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card">
+								<div class="card__cover">
+									<img src="assets/covers/cover5.jpg" alt="">
+									<a href="#" class="card__play">
+										<i class="icon ion-ios-play"></i>
+									</a>
+								</div>
+								<div class="card__content">
+									<h3 class="card__title"><a href="#">Benched</a></h3>
+									<span class="card__category">
+										<a href="#">Comedy</a>
+									</span>
+									<span class="card__rate"><i class="icon ion-ios-star"></i>7.1</span>
+								</div>
+							</div>
+						</div>
+						<!-- end card -->
+
+						<!-- card -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card">
+								<div class="card__cover">
+									<img src="assets/covers/cover5.jpg" alt="">
+									<a href="#" class="card__play">
+										<i class="icon ion-ios-play"></i>
+									</a>
+								</div>
+								<div class="card__content">
+									<h3 class="card__title"><a href="#">Whitney</a></h3>
+									<span class="card__category">
+										<a href="#">Romance</a>
+										<a href="#">Drama</a>
+										<a href="#">Music</a>
+									</span>
+									<span class="card__rate"><i class="icon ion-ios-star"></i>6.3</span>
+								</div>
+							</div>
+						</div>
+						<!-- end card -->
+
+						<!-- card -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card">
+								<div class="card__cover">
+									<img src="assets/covers/cover6.jpg" alt="">
+									<a href="#" class="card__play">
+										<i class="icon ion-ios-play"></i>
+									</a>
+								</div>
+								<div class="card__content">
+									<h3 class="card__title"><a href="#">Blindspotting</a></h3>
+									<span class="card__category">
+										<a href="#">Comedy</a>
+										<a href="#">Drama</a>
+									</span>
+									<span class="card__rate"><i class="icon ion-ios-star"></i>7.9</span>
+								</div>
+							</div>
+						</div>
+						<!-- end card -->
+
+						<!-- card -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card">
+								<div class="card__cover">
+									<img src="assets/covers/cover3.jpg" alt="">
+									<a href="#" class="card__play">
+										<i class="icon ion-ios-play"></i>
+									</a>
+								</div>
+								<div class="card__content">
+									<h3 class="card__title"><a href="#">I Dream in Another Language</a></h3>
+									<span class="card__category">
+										<a href="#">Action</a>
+										<a href="#">Triler</a>
+									</span>
+									<span class="card__rate"><i class="icon ion-ios-star"></i>8.4</span>
+								</div>
+							</div>
+						</div>
+						<!-- end card -->
+
+						<!-- card -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card">
+								<div class="card__cover">
+									<img src="assets/covers/cover4.jpg" alt="">
+									<a href="#" class="card__play">
+										<i class="icon ion-ios-play"></i>
+									</a>
+								</div>
+								<div class="card__content">
+									<h3 class="card__title"><a href="#">Benched</a></h3>
+									<span class="card__category">
+										<a href="#">Comedy</a>
+									</span>
+									<span class="card__rate"><i class="icon ion-ios-star"></i>7.1</span>
+								</div>
+							</div>
+						</div>
+						<!-- end card -->
+
+						<!-- card -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card">
+								<div class="card__cover">
+									<img src="assets/covers/cover.jpg" alt="">
+									<a href="#" class="card__play">
+										<i class="icon ion-ios-play"></i>
+									</a>
+								</div>
+								<div class="card__content">
+									<h3 class="card__title"><a href="#">Whitney</a></h3>
+									<span class="card__category">
+										<a href="#">Romance</a>
+										<a href="#">Drama</a>
+										<a href="#">Music</a>
+									</span>
+									<span class="card__rate"><i class="icon ion-ios-star"></i>6.3</span>
+								</div>
+							</div>
+						</div>
+						<!-- end card -->
+
+						<!-- card -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card">
+								<div class="card__cover">
+									<img src="assets/covers/cover2.jpg" alt="">
+									<a href="#" class="card__play">
+										<i class="icon ion-ios-play"></i>
+									</a>
+								</div>
+								<div class="card__content">
+									<h3 class="card__title"><a href="#">Blindspotting</a></h3>
+									<span class="card__category">
+										<a href="#">Comedy</a>
+										<a href="#">Drama</a>
+									</span>
+									<span class="card__rate"><i class="icon ion-ios-star"></i>7.9</span>
+								</div>
+							</div>
+						</div>
+						<!-- end card -->
+					</div>
+				</div>
+
+				<div class="tab-pane fade" id="tab-4" role="tabpanel" aria-labelledby="4-tab">
+					<div class="row">
+						<!-- card -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2" *ngFor="let data of premierData">
+							<div class="card">
+								<div class="card__cover">
+									<img src="{{data.pagecover}}" alt="">
+									<a routerLink="/movie/{{data.id}}" class="card__play">
+										<i class="icon ion-ios-play"></i>
+									</a>
+								</div>
+								<div class="card__content">
+									<h3 class="card__title"><a routerLink="/movie/{{data.id}}">{{data.title}}</a></h3>
+									<span class="card__category">
+										<a routerLink="/movie/{{data.id}}">{{data.genre}}</a>
+									</span>
+									<span class="card__rate"><i class="icon ion-ios-star"></i>{{data.rate}}</span>
+								</div>
+							</div>
+						</div>
+						<!-- end card -->
+					</div>
+				</div>
+			</div>
+			<!-- end content tabs -->
+		</div>
+	</section>
+
+	
+
+
+	<!-- // lapas bawah-->
+
+	<section class="section late section--bg">
+		<div class="container">
+			<div class="row">
+				<!-- section title -->
+				<div class="col-12">
+					<h2 class="section__title">Late Night Movies</h2>
+				</div>
+				<!-- end section title -->
+
+				
+				<ion-slides [options]="slideOptstwo">
+					<ion-slide *ngFor="let data of allMovieData">
+
+						<!-- card -->
+
+						<div class="movie-card" routerLink="/movie/{{data.id}}" >
+							<div class="movie-base">
+								<div class="card-new">
+									<img src="{{data.homecover}}" alt="" width="80%">
+									<a routerLink="/movie/{{data.id}}" class="card__play">
+										<i class="icon ion-ios-play"></i>
+									</a>
+								</div>
+								<div class="card__content">
+									<h3 class="card__title"><a routerLink="/movie/{{data.id}}">{{data.title}}</a></h3>
+									<span class="card__rate"><i class="icon ion-ios-star"></i>{{data.rate}}</span>
+								</div>
+							</div>
+						</div>
+						<!-- end card -->
+
+					</ion-slide>
+				</ion-slides>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="section premiere section--bg">
+		<div class="container">
+			<div class="row">
+				<!-- section title -->
+				<div class="col-12">
+					<h2 class="section__title">Expected premiere</h2>
+				</div>
+				<!-- end section title -->
+
+				<!-- card -->
+				<div class="col-6 col-sm-4 col-lg-3 col-xl-2" *ngFor="let data of premierData">
+					<div class="card">
+						<div class="card__cover">
+							<img src="{{data.pagecover}}" alt="">
+							<a routerLink="/movie/{{data.id}}" class="card__play">
+								<i class="icon ion-ios-play"></i>
+							</a>
+						</div>
+						<div class="card__content">
+							<h3 class="card__title"><a routerLink="/movie/{{data.id}}">{{data.title}}</a></h3>
+							<span class="card__category">
+								<a routerLink="/movie/{{data.id}}">{{data.genre}}</a>
+							</span>
+							<span class="card__rate"><i class="icon ion-ios-star"></i>{{data.rate}}</span>
+						</div>
+					</div>
+				</div>
+				<!-- section btn -->
+				<div class="col-12">
+					<a href="#" class="section__btn">Show more</a>
+				</div>
+				<!-- end section btn -->
+			</div>
+		</div>
+	</section>
+	<!-- end expected premiere -->
+
+</ion-content>

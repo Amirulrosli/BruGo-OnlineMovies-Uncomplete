@@ -1,0 +1,26 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-toolbar>
+    <ion-icon (click)="gotoHome()" name="close"></ion-icon>
+    <ion-title>{{title}}</ion-title>
+  </ion-toolbar>
+
+  <div id="iframe-div">
+    <iframe [src]="sanitize(trailer)" width="100%" height="260" style="border:none;" frameborder="0" allow="autoplay">
+    </iframe>
+
+  </div>
+
+  <div class="forward" (click)="goForward(next)">
+
+  </div>
+  <div class="backward" (click)="goBackward(previous)">
+ 
+  </div>
+ 
+
+</ion-content>
