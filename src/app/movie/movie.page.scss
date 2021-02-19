@@ -1,0 +1,123 @@
+
+
+
+
+.icon-1{
+    position: absolute;
+    top: 38px;
+    left: 20px;
+    z-index: 300;
+    --background-color: rgba(255, 255, 255, 0.836);
+    padding: 5px;
+    height: 30px;
+    border-radius: 50%;
+    
+    
+}
+
+.arrow{
+    color: black;
+    font-size: 20px;
+}
+
+
+
+.new-sections{
+    margin-top: 50%;
+}
+
+.play{
+    width: 180px;
+    height: 50px;
+    --border-radius: 30px;
+    --box-shadow: none;
+    --background: rgb(255, 82, 111);
+}
+
+.back{
+  
+    color: white;
+    font-size: 25px;
+
+}
+
+ion-content{
+    --background: black;
+  }
+
+  .card-once{
+      width: 80%;
+      margin: 0 auto;
+
+      img{
+          margin: 0 auto;
+      }
+      
+  }
+  .section{
+      margin-top: 15px;
+  }
+
+  .card-movie{
+      margin-left: 20px;
+      width: 80%;
+      
+  }
+
+  .card-back{
+    width: 80%;
+  }
+  
+  .image{
+      margin: 0 auto;
+  }
+
+  .title{
+      text-align: center;
+  }
+
+  ion-footer{
+    --background: black;
+
+
+      ion-toolbar{
+          --background: rgb(12, 12, 12);
+          height: 60px;
+        ion-icon{
+            color: pink;
+        }
+
+        .star{
+            position: absolute;
+            left: 30px;
+            font-size: 26px;
+            top:15px;
+
+        }
+
+        .add{
+            position: absolute;
+            right: 30px;
+            font-size: 26px;
+            top:15px;
+        }
+
+        .newPlay{
+            width: 160px;
+            height: 45px;
+            margin-top: -5px;
+            left: 28%;
+            font-weight: bolder;
+
+            top:10px;
+            --color: white;
+            --border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(255, 51, 204, 0.4);
+            color:white;
+            --background: linear-gradient(rgb(255, 107, 131),rgb(255, 60, 93));
+            position: absolute;
+
+        }
+
+      } 
+  }

@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon class="back" name="arrow-back" (click)="Back()"></ion-icon>
+    <ion-searchbar #data (ionInput)="filterList($event)" placeholder="search for movies..."></ion-searchbar>
+    <p class="search" (click)="goToResult(null)">Search</p>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="items && list==true">
+    <ion-list style="background: transparent;">
+      <ion-item style="background: transparent;" *ngFor="let item of items" (click)="goToResult(item.id)">
+
+        <ion-label>
+          {{item.title}}
+        </ion-label>
+
+      </ion-item>
+     
+
+    </ion-list>
+
+  </div>
+
+</ion-content>

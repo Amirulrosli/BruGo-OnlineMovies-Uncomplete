@@ -1,0 +1,52 @@
+ion-content{
+
+    .close{
+        font-size:30px;
+        z-index: 399;
+        position: absolute;
+        right:20px;
+        top:30px;
+
+
+    }
+    .logo{
+        position: absolute;
+        top: 9%;
+        z-index: 4001;
+        width: 100%;
+       
+
+        img{
+            margin-left: 10px;
+            width: 50px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        
+    }
+
+
+
+    .button-back{
+        position: absolute;
+        bottom: 0px;
+        z-index: 4000;
+        width: 100%;
+      
+    }
+    ion-item{
+        margin: 0 auto;
+        --background: rgba(0, 0, 0, 0.466);
+        --box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    
+
+    .back-1{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.6;
+    }
+
+
+}

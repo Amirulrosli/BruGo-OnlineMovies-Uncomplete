@@ -1,0 +1,94 @@
+.arrow{
+    position: absolute;
+    top: 38px;
+    left: 20px;
+    z-index: 100;
+    --background-color: rgba(255, 255, 255, 0.836);
+    padding: 5px;
+    height: 30px;
+    border-radius: 50%;
+
+    ion-icon{
+        color: black;
+        font-size: 20px;
+    }
+}
+
+ion-content{
+    --background: rgb(12, 12, 12);
+
+    .page-slide{
+        margin: 0;
+      }
+      
+      .card-1{
+        padding: 0px;
+        margin: 0px;
+        width: 95%;
+        height: 95%;
+        border-radius: 5px;
+      }
+      
+      .story-1{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      ion-slide{
+        padding: 0px;
+        margin: 0;
+      }
+}
+
+
+.video{
+    margin-top: 40px;
+}
+
+ion-title{
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: white;
+}
+
+.item-1{
+
+    --background: transparent;
+    .title{
+        font-size: 17px;
+        color: white;
+    }
+
+    .drop{
+        font-size: 16px;
+        color: white;
+        margin-top:-10px;
+
+    }
+
+    
+}
+
+ion-item{
+    --background: rgb(20, 20, 20);
+    padding-left: -10px;
+    margin-bottom: 10px;
+    ion-label{
+        margin-left: 10px;
+    }
+
+    h1{
+        font-size: 18px;
+    }
+    h4{
+        color: pink;
+    }
+
+    p{
+        color: rgb(122, 122, 122);
+    }
+
+
+}
+

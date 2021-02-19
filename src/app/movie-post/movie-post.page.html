@@ -1,0 +1,62 @@
+
+<ion-content>
+  <div class="arrow" style="background: white;">
+    <ion-icon (click)="back()" name="arrow-back"></ion-icon>
+  </div>
+  
+
+
+
+  
+
+  <video #myVideo class="video" *ngIf="movie!==undeifned" controls height="35%" width="100%" autoplay controlsList="nodownload">
+    <source [src]="sanitize(movie)" type="video/mp4"/>
+
+  </video>
+
+    <ion-item class="item-1" lines="none">
+      <p class="title">{{title}}</p>
+      <ion-icon slot="end" class="drop" name="chevron-down-outline"></ion-icon>
+  
+    </ion-item>
+   
+  
+
+
+  <div class="content__head">
+			
+    <div class="container">
+
+      
+      <div class="row">
+        <div class="col-12" style="background: black; padding-bottom:18px;">
+
+          <h2 class="content__title" style="font-size: 16px; margin-bottom: 5px;">Recommended For You</h2>
+
+          <ion-slides [options]="slideOptsFour">
+            <ion-slide class="page-slide" *ngFor="let data of recommend">
+              <ion-card class="card-1" routerLink="/movie/{{data.id}}">
+        
+                <img class="story-1" src="{{data.pagecover}}"/>
+        
+              </ion-card>
+            </ion-slide>
+          </ion-slides>
+          <!-- end content mobile tabs nav -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ion-item *ngFor="let data of recommend" (click)="goToPost(data.id)">
+    <img src="{{data.homecover}}" width="40%"/>
+    <ion-label>
+      <h1>{{data.title}}</h1>
+      <h4>{{data.genre}}</h4>
+      <p>{{data.description}}</p>
+    </ion-label>
+  </ion-item>
+
+  
+
+</ion-content>

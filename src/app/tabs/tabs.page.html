@@ -1,0 +1,28 @@
+<ion-tabs>
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home" (click)="home()">
+      <ion-icon class="logo" name="home-outline" [ngStyle]="{'color': buttonColor1}"></ion-icon>
+      <ion-label [ngStyle]="{'color': buttonColor1}">Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="explore" (click)="explore()">
+      <ion-icon class="logo" name="Navigate-outline" [ngStyle]="{'color': buttonColor2}"></ion-icon>
+      <ion-label [ngStyle]="{'color': buttonColor2}">Explore</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="library" (click)="history()">
+      <ion-icon class="logo1" name="archive" [ngStyle]="{'color': buttonColor3}"></ion-icon>
+      <ion-label [ngStyle]="{'color': buttonColor3}">Watchlist</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="profile" (click)="profile()">
+      <ion-icon class="logo" name="person-circle-outline" [ngStyle]="{'color': buttonColor4}"></ion-icon>
+      <ion-label [ngStyle]="{'color': buttonColor4}">Profile</ion-label>
+    </ion-tab-button>
+
+  </ion-tab-bar>
+
+  
+
+</ion-tabs>
