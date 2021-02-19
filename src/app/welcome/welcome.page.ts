@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { UserService } from '../user.sevice';
 
 @Component({
@@ -14,12 +14,15 @@ export class WelcomePage implements OnInit {
   slideOptsOne
   username: any;
   email: any;
+  password: any;
 
   constructor( private router: Router,
     private afstore: AngularFirestore,
     private auth: AngularFireAuth,
     private loading: LoadingController,
-    private userService: UserService
+    private userService: UserService,
+    private alert: AlertController
+    
     ) { 
     this.slideOptsOne = {
       initialSlide: 0,
@@ -50,6 +53,53 @@ export class WelcomePage implements OnInit {
   }
   register(){
     this.router.navigate(['/register'])
+  }
+
+  async Login(){
+    try{
+      const email = this.email;
+      const password = this.password;
+
+      console.log(email+" "+password)
+      const res = await this.auth.signInWithEmailAndPassword(email,password)
+      .then(async (res)=> {
+
+        if (res.user) {
+          this.userService.setUser({
+            username: email,
+            email: email,
+            uid: res.user.uid
+          })
+        }
+
+        this.showAlert("Login Successful", "Welcome back "+email)
+        this.router.navigate(['/tabs/home'])
+      },error=> {
+        console.log(error)
+        this.showAlert("Login Failed","Please Check and Try Again!")
+        return;
+      })
+    } catch (error){
+      this.showAlert("Login Failed","Please Check and Try Again!")
+      return;
+      console.log(error)
+    }
+  }
+
+
+  
+  async showAlert(header:string,message:string){
+    const alert = await this.alert.create({
+
+      header,
+      message,
+      buttons: ["Ok"]
+
+
+    })
+
+
+    await alert.present()
   }
 
   Anonymous(){

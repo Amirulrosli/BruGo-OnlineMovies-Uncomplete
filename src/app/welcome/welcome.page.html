@@ -10,18 +10,18 @@
 
   
     <ion-item>
-      <ion-input placeholder="Email"></ion-input>
+      <ion-input [(ngModel)]="email" type="email" placeholder="Email"></ion-input>
       <ion-icon name="mail-outline"  slot="end" align-self-center></ion-icon>
     
     </ion-item>
     <ion-item>
-      <ion-input placeholder="Password"></ion-input>
+      <ion-input [(ngModel)]="password" type="password" placeholder="Password"></ion-input>
       <ion-icon name="lock-closed-outline" slot="end" align-self-center></ion-icon>
     </ion-item>
 
     <p>Forgotten Your Password? <a>Click Here</a></p>
 
-    <ion-button class="button-1">LogIn</ion-button>
+    <ion-button class="button-1" (click)="Login()">LogIn</ion-button>
 
   </div>
 

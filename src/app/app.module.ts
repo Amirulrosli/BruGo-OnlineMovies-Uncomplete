@@ -17,6 +17,7 @@ import {AngularFireStorageModule} from '@angular/fire/storage'
 import { StreamingMedia } from '@ionic-native/streaming-media/ngx';
 import { DatePipe } from '@angular/common';
 import { UserService } from './user.sevice';
+import { AuthService } from './auth.service';
 
 firebase.initializeApp(firebaseConfig)
 
@@ -39,6 +40,7 @@ firebase.initializeApp(firebaseConfig)
     StreamingMedia,
     DatePipe,
     UserService,
+    AuthService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
