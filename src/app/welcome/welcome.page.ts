@@ -45,7 +45,7 @@ export class WelcomePage implements OnInit {
     return await this.loading.dismiss();
   }
 
-  sign(){
+  goToSignup(){
     this.router.navigate(['/login'])
   }
   register(){

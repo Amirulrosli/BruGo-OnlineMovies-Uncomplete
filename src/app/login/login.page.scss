@@ -1,0 +1,92 @@
+ion-content{
+
+    --background-color: black;
+
+    .background{
+        height: 100%;
+        width: 100%;
+        opacity: 0.1;
+        position: absolute;
+    }
+
+    .new-logo{
+        display:block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 160px;
+        position: relative;
+        top: 130px;
+    }
+    
+    ion-item{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 98%;
+        margin-top: 10px;
+        --background:rgba(41, 41, 41, 0.116);
+        border: 1px solid rgba(255, 255, 255, 0.247);
+        border-radius: 5px;
+    }
+
+    ion-input{
+        
+        color: white;
+        --background:rgba(27, 27, 27, 0.116);
+        --border-radius: 10px;
+        --padding-start: 10px;
+       
+    }
+    ion-icon{
+        color: white;
+    }
+
+    .login{
+        position: relative;
+        top: 25%;
+    }
+
+    a{
+        color: rgb(114, 0, 44);
+    }
+
+    p{
+        padding-left: 10px;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    .button-1{
+        margin-top: 50px;
+        width: 90%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        height: 45px;
+        --background: rgb(255, 66, 98);
+        box-shadow: 0 5px 15px rgba(255, 65, 113, 0.4);
+    }
+    
+    .signup{
+        --background: black;
+        position:absolute;
+        bottom: 0;
+        text-align: center;
+        left:18%;
+        
+        a{
+            color: rgb(255, 0, 140);
+        }
+    }
+
+    .term{
+        display: flex;
+
+        ion-checkbox{
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+    }
+  
+
+}

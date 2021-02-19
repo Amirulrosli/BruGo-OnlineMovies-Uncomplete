@@ -1,32 +1,39 @@
 
 <ion-content>
   
-  <ion-icon class="close" (click)="Anonymous()" name="close-outline"></ion-icon>
+  <img class="background" src="assets/covers/cover5.jpg"/>
 
-
-  <ion-slides style="width: 100%; height:100%;" pager [options]="slideOptsOne">
-    <ion-slide style="width: 100%; height:100%;">
-      <img class="back-1" src="assets/background1.jpg" alt="back-1"/>
-    </ion-slide>
-    <ion-slide style="width: 100%; height:100%;">
-      <img class="back-1" src="assets/background0.jpg" alt="back-1"/>
-    </ion-slide>
-    <ion-slide style="width: 100%; height:100%;">
-      <img class="back-1" src="assets/background2.jpg" alt="back-1"/>
-    </ion-slide>
-  </ion-slides>
-
-  <ion-list>
-    <ion-item>
-      
-    </ion-item>
-    <ion-item>
-      
-    </ion-item>
-  </ion-list>
-
+  <div class="black">
+    <img class="new-logo" src="assets/brugo.png"/>
+  </div>
+  <div class="login">
 
   
+    <ion-item>
+      <ion-input placeholder="Email"></ion-input>
+      <ion-icon name="mail-outline"  slot="end" align-self-center></ion-icon>
+    
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="Password"></ion-input>
+      <ion-icon name="lock-closed-outline" slot="end" align-self-center></ion-icon>
+    </ion-item>
+
+    <p>Forgotten Your Password? <a>Click Here</a></p>
+
+    <ion-button class="button-1">LogIn</ion-button>
+
+  </div>
+
+
+  <div class="signup">
+    <p style="text-align: center;">
+      Does not have an account? <a (click)="goToSignup()">Signup</a>
+    </p>
+  </div>
 
 
 </ion-content>
+
+
+

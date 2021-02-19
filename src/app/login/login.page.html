@@ -1,9 +1,48 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content>
+  
+  <img class="background" src="assets/covers/cover4.jpg"/>
+
+  <div class="black">
+    <img class="new-logo" src="assets/brugo.png"/>
+  </div>
+  <div class="login">
+
+    <ion-item>
+      <ion-input placeholder="Username"></ion-input>
+      <ion-icon name="person"  slot="end" align-self-center></ion-icon>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="email" placeholder="Email"></ion-input>
+      <ion-icon name="mail-outline"  slot="end" align-self-center></ion-icon>
+    
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="Password"></ion-input>
+      <ion-icon name="lock-closed-outline" slot="end" align-self-center></ion-icon>
+    </ion-item>
+    <div class="term">
+      <ion-checkbox (click)="agree()" slot="start" [(ngModel)]="box"></ion-checkbox>
+      <p>I agreed to the Terms and conditions</p>
+    </div>
+     
+    
+
+    <ion-button class="button-1" [disabled]="!check">Signup</ion-button>
+
+  </div>
+
+
+  <div class="signup">
+    <p style="text-align: center;">
+      Already have an account? <a (click)="goToSignup()">Login</a>
+    </p>
+  </div>
+
 
 </ion-content>
+
+
+
+

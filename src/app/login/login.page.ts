@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
+  check: any = false;
+
+  constructor() {
+    this.check=false;
+   }
 
   ngOnInit() {
+    this.check=false;
   }
+
+  agree(){
+    this.check = !this.check;
+    console.log(this.check)
+  }
+
+  
 
 }
