@@ -63,12 +63,13 @@ export class AuthService implements CanActivate {
 
 
 
-    // SendVerificationMail() {
-    //     return this.ngFireAuth.currentUser.sendEmailVerification()
-    //     .then(() => {
-    //       this.router.navigate(['verifyemail']);
-    //     })
-    //   }
+    SendVerificationMail() {
+        return this.ngFireAuth.currentUser.then(res=> {
+          res.sendEmailVerification();
+        },error=> {
+          console.log(error)
+        })
+      }
 
     
     // get isLoggedIn(): boolean {
@@ -77,12 +78,12 @@ export class AuthService implements CanActivate {
     // }
 
 
-    // get isEmailVerified(): boolean {
-    //     const users = JSON.parse(localStorage.getItem('user'));
-    //     let verified = (users.emailVerified !== false)? true: false;
+    get isEmailVerified(): boolean {
+        const users = JSON.parse(localStorage.getItem('user'));
+        let verified = (users.emailVerified !== false)? true: false;
        
-    //     return verified;
-    // }
+        return verified;
+    }
 
     // PasswordRecover(passwordResetEmail) {
     //     return this.ngFireAuth.auth.sendPasswordResetEmail(passwordResetEmail)

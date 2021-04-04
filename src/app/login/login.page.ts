@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
+import Swal from 'sweetalert2';
 import { AuthService } from '../auth.service';
 import { UserService } from '../user.sevice';
 
@@ -24,7 +25,8 @@ export class LoginPage implements OnInit {
     private auth: AuthService,
     private afstore: AngularFirestore,
     private afAuth: AngularFireAuth,
-    private alert: AlertController
+    private alert: AlertController,
+    private loadingCtrl: LoadingController
     ) {
     this.check=false;
    }
@@ -42,7 +44,23 @@ export class LoginPage implements OnInit {
     this.router.navigate(['/welcome'])
   }
 
+  showHideLoader(){
+
+    this.loadingCtrl.create({  
+      message: 'loading',  
+      duration: 2000  
+    }).then((res) => {   
+      res.present();  
+    res.onDidDismiss().then((dis) => {  
+      console.log('Loading dismissed! after four Seconds');  
+    });  
+  });  
+
+  }
+
   signup(){
+
+    this.showHideLoader();
 
     if (this.check == true){
 
@@ -66,33 +84,45 @@ export class LoginPage implements OnInit {
             this.afstore.doc(`Login/${email}`).set({
               username,
               email,
+              uid: res.user.uid
             })
 
             this.afstore.doc(`user/${res.user.uid}`).set({
               username,
-              email
+              email,
+              uid: res.user.uid
             })
 
             this.afstore.doc(`profiles/${res.user.uid}`).set({
               username,
-              email
+              email,
+              uid: res.user.uid
+
+            })
+
+            this.afstore.doc(`watchlist/${res.user.uid}`).set({
+              username,
+              email,
+              uid: res.user.uid
             })
             .then(data=> {
-              this.showAlert("Registration Completed","You may login into your account")
-              this.router.navigate(['/welcome'])
+              Swal.fire('Registration Completed','Please verify your email address before proceed','success')
+              this.auth.SendVerificationMail();
+              this.router.navigate(['/verifyemail/'+email+"/"+username])
               return;
             })
           } catch (error){
+            Swal.fire('Registration Failed','Please Check and try again','error')
             console.log(error)
           }
         }
       },error=> {
+        Swal.fire('Registration Failed','Please Check and try again','error')
         console.log(error)
       })
 
     } else {
-
-      this.showAlert("Signup Failed","Please Try Again!")
+      Swal.fire('Registration Failed','Please Check and try again','error')
       
 
     }

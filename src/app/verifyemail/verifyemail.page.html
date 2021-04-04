@@ -1,0 +1,46 @@
+
+<ion-content>
+  
+  <img class="background" src="assets/covers/cover3.jpg"/>
+  <div class="black">
+    <img class="new-logo" src="assets/email.png"/>
+  </div>
+
+ 
+  <div class="login">
+
+    <ion-label style="margin-left:10px">Please Check Your Inbox and Verify Your Email Now!</ion-label>
+
+    <ion-item>
+      <ion-input [(ngModel)]="username" placeholder="Username" disabled></ion-input>
+      <ion-icon name="person"  slot="end" align-self-center></ion-icon>
+    </ion-item>
+
+    <ion-item>
+      <ion-input [(ngModel)]="email" type="email" placeholder="Email" disabled></ion-input>
+      <ion-icon name="mail-outline"  slot="end" align-self-center></ion-icon>
+    
+    </ion-item>
+ 
+     
+    
+
+    <ion-button class="button-1" (click)="goToLogin()">Continue</ion-button>
+    <div class="section">
+      <p style="text-align: center;"><span class="section-2">1</span> <span class="section-1">2</span><span class="section-2">3</span></p>
+    </div>
+  </div>
+
+
+  <!-- <div class="signup">
+    <p style="text-align: center;">
+      Already have an account? <a (click)="goToLogin()">Login</a>
+    </p>
+  </div> -->
+
+
+</ion-content>
+
+
+
+

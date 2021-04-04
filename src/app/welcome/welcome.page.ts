@@ -1,3 +1,4 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -15,6 +16,7 @@ export class WelcomePage implements OnInit {
   username: any;
   email: any;
   password: any;
+ mydata: any;
 
   constructor( private router: Router,
     private afstore: AngularFirestore,
@@ -64,16 +66,25 @@ export class WelcomePage implements OnInit {
       const res = await this.auth.signInWithEmailAndPassword(email,password)
       .then(async (res)=> {
 
-        if (res.user) {
-          this.userService.setUser({
-            username: email,
-            email: email,
-            uid: res.user.uid
-          })
-        }
+        this.afstore.doc(`Login/${email}`).valueChanges().subscribe(data=> {
+          this.mydata = data;
 
-        this.showAlert("Login Successful", "Welcome back "+email)
-        this.router.navigate(['/tabs/home'])
+          if (res.user) {
+            this.userService.setUser({
+              username: this.mydata.username,
+              email: email,
+              uid: res.user.uid
+            })
+          }
+  
+          this.showAlert("Login Successful", "Welcome back "+email)
+          this.router.navigate(['/tabs/home'])
+
+        },error=> {
+          this.showAlert("Login Failed","Invalid email or password, Please try again")
+        })
+
+      
       },error=> {
         console.log(error)
         this.showAlert("Login Failed","Please Check and Try Again!")

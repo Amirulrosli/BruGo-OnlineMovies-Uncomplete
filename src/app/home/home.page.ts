@@ -1,5 +1,6 @@
 
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Content } from '@angular/compiler/src/render3/r3_ast';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { IonContent } from '@ionic/angular';
@@ -11,6 +12,8 @@ import { IonContent } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
 
+  @ViewChild(IonContent) content: IonContent
+  toolbar_color: string
   slideOptsOne: any;
   slideOptstwo: any;
   slideOptsFour: any;
@@ -18,7 +21,7 @@ export class HomePage implements OnInit {
   newMovie:any;
   movies: any;
   moviesData:any;
-  content="NEW RELEASE";
+  contents="NEW RELEASE";
   move="MOVIES";
   series="SERIES";
   cartoons="CARTOONS";
@@ -34,8 +37,11 @@ export class HomePage implements OnInit {
 
   constructor(
     private router: Router,
-    private afstore: AngularFirestore
+    private afstore: AngularFirestore,
+    private ref: ChangeDetectorRef
   ) {
+
+    this.toolbar_color = "#fff";
 
     this.slideOptsOne = {
       initialSlide: 0,
@@ -66,6 +72,18 @@ export class HomePage implements OnInit {
     };
 
 
+  }
+
+  changeColor(){
+    this.toolbar_color="#000"
+    this.ref.detectChanges();
+  }
+
+  ionViewDidLoad(){
+
+    this.content.ionScrollEnd.subscribe(()=> {
+      this.changeColor();
+    })
   }
 
 
@@ -99,7 +117,7 @@ export class HomePage implements OnInit {
 
 
   tabs(change){
-    this.content = change;
+    this.contents = change;
   }
 
   goToSearch(){

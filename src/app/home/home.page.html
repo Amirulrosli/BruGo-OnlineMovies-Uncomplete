@@ -1,32 +1,24 @@
-<ion-header >
+<ion-header>
+	
 
+	<div class="toolbar-1">
+		<a routerLink="/tabs/home" class="logo" >
+			<img src="assets/brugo.png" alt="">
+		</a>
+
+		<ion-icon class="icon1" type="button" (click)="goToSearch()" name="search-outline"></ion-icon>
+		<a href="signin.html" class="icon header__sign-in">
+			<i class="ion-ios-log-in"></i>
+			<span>Log out</span>
+		</a>
+
+	</div>	
 
 	
 						
-							<!-- header logo -->
-							<a routerLink="/tabs/home" class="logo" >
-								<img src="assets/brugo.png" alt="">
-							</a>
-							<!-- end header logo -->
-
-							<!-- header nav -->
 						
 
-							<!-- header auth -->
-							<div class="header__auth">
-								<button class="icon1 header__search-btn" type="button" (click)="goToSearch()">
-									<i class="ion-ios-search"></i>
-								</button>
-
-								<a href="signin.html" class="icon header__sign-in">
-									<i class="ion-ios-log-in"></i>
-									<span>Log out</span>
-								</a>
-							</div>
-							<!-- end header auth -->
-							
-
-
+	
 
 
 </ion-header>
@@ -110,7 +102,7 @@
 						<!-- content mobile tabs nav -->
 						<div class="content__mobile-tabs" id="content__mobile-tabs">
 							<div class="content__mobile-tabs-btn dropdown-toggle" role="navigation" id="mobile-tabs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<input type="button" value="{{content}}">
+								<input type="button" value="{{contents}}">
 								<span></span>
 							</div>
 

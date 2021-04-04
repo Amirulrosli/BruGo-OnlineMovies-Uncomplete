@@ -55,6 +55,14 @@ const routes: Routes = [
     path: 'result/:id',
     loadChildren: () => import('./result/result.module').then( m => m.ResultPageModule)
   },
+  {
+    path: 'verifyemail/:email/:username',
+    loadChildren: () => import('./verifyemail/verifyemail.module').then( m => m.VerifyemailPageModule)
+  },
+  {
+    path: 'info/:email',
+    loadChildren: () => import('./info/info.module').then( m => m.InfoPageModule)
+  },
 ];
 
 @NgModule({

@@ -30,6 +30,8 @@
     "cordova-plugin-streaming-media": "^2.3.0",
     "cordova-plugin-video-player": "git+https://github.com/moust/cordova-plugin-videoplayer.git",
     "rxjs": "~6.5.5",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^10.15.7",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
   },

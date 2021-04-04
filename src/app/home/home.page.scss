@@ -1,11 +1,16 @@
 ion-header{
 
-  --background: transparent;
+
+  .toolbar-1{
+    background-color: rgb(41, 41, 41);
+    height: 90px;
+  }
+
   .logo{
     width:80px;
     position: absolute;
-    top: 30px;
-    left: 0px;
+    top: 40px;
+    left: 10px;
 
   }
   .icon{
@@ -19,9 +24,14 @@ ion-header{
     position: absolute;
     right: 25%;
     top: 43px;
+    color: white;
+    font-size: 25px;
   }
 
+
 }
+
+
 
 .this-home{
   margin-top:-40px;
@@ -47,7 +57,7 @@ ion-header{
 }
 
 ion-content{
-  --background: black;
+  --background: #000;
 }
 
 .movie-base{
