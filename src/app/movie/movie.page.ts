@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media/ngx';
 import { AlertController } from '@ionic/angular';
+import Swal from 'sweetalert2';
+import { UserService } from '../user.sevice';
 
 @Component({
   selector: 'app-movie',
@@ -30,6 +32,7 @@ export class MoviePage implements OnInit {
   uploadedDate:any;
   upDate:any;
   slideOptsThree:any;
+  category: any;
   
 
 
@@ -40,7 +43,9 @@ export class MoviePage implements OnInit {
     private streamingmedia: StreamingMedia,
     private router: Router,
     private alert: AlertController,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private user: UserService,
+   
     ) {
 
 
@@ -72,6 +77,7 @@ export class MoviePage implements OnInit {
       this.movie = this.retrieve.movie;
       this.trailer = this.retrieve.trailer;
       this.pagecover = this.retrieve.pagecover;
+      this.category = this.retrieve.category;
       try{
         this.upDate = this.retrieve.date;
         this.uploadedDate = this.datePipe.transform(this.date,"yyyy")
@@ -154,7 +160,9 @@ export class MoviePage implements OnInit {
     //   target.remove();
     // }
 
-    this.router.navigate(['/tabs/home'])
+    this.location.back()
+
+    
   }
 
   async showAlert(header:string, message:string){
@@ -182,6 +190,45 @@ export class MoviePage implements OnInit {
   
   goToSearch(){
     this.router.navigate(['/search'])
+  }
+
+  addToLibrary(){
+
+    const title = this.title
+    const description = this.description
+    const genre = this.genre
+    const rate = this.rate
+    const homecover = this.homecover
+    const movie = this.movie
+    const trailer = this.trailer
+    const pagecover = this.pagecover
+    const category = this.category
+    const id = this.id
+    const uid = this.user.getUID();
+
+    try{
+      this.afstore.doc(`library/${uid}/store/${id}`).set({
+        title,
+        description,
+        genre,
+        rate,
+        homecover,
+        movie,
+        trailer,
+        pagecover,
+        category,
+        id,
+        uid
+      }).then(resp=> {
+        Swal.fire('Added to the Library','Successfully added to the library','info')
+      })
+    } catch (error) {
+
+      console.log(error)
+
+      Swal.fire('Unsuccessful process','please check and try again','error')
+
+    }
   }
 
 

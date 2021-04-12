@@ -7,6 +7,10 @@ ion-content{
         
         --background: rgb(32, 32, 32);
     }
+
+    ion-list{
+        --background: rgb(32, 32, 32);
+    }
     .profile-photo{
         width: 70px;
         height: 70px;
@@ -58,7 +62,7 @@ ion-content{
          }
          .notification{
             position: absolute;
-            right:50px;
+            right:60px;
             top:18px;
             font-size: 20px;
             color:white;

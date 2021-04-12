@@ -4,6 +4,8 @@ import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { IonContent } from '@ionic/angular';
+import { AuthService } from '../auth.service';
+import { UserService } from '../user.sevice';
 
 @Component({
   selector: 'app-home',
@@ -38,7 +40,9 @@ export class HomePage implements OnInit {
   constructor(
     private router: Router,
     private afstore: AngularFirestore,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private user: UserService,
+    private auth: AuthService
   ) {
 
     this.toolbar_color = "#fff";
@@ -137,6 +141,10 @@ export class HomePage implements OnInit {
 
   onScroll(evt){
     console.log("scrolling")
+  }
+
+  signOut(){
+    this.auth.SignOut();
   }
 
 }

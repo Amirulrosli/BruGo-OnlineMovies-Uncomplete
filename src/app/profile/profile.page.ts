@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 import { UserService } from '../user.sevice';
 
 @Component({
@@ -12,7 +13,8 @@ export class ProfilePage implements OnInit {
   userName: String
 
   constructor(
-    private user: UserService
+    private user: UserService,
+    private auth: AuthService
   ) { }
 
   ngOnInit() {
@@ -23,6 +25,10 @@ export class ProfilePage implements OnInit {
 
 
 
+  }
+
+  signOut(){
+    this.auth.SignOut();
   }
 
 }

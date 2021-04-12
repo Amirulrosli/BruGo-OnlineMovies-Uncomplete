@@ -24,7 +24,7 @@ export class VerifyemailPage implements OnInit {
 
   }
 
-  goToLogin(){
+  goToInfo(){
     this.router.navigate(['/info/'+this.email])
   }
 

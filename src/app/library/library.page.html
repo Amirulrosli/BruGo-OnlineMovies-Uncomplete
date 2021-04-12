@@ -40,9 +40,15 @@
 					<h2 class="section__title" style="font-size: 18px;">My List</h2>
 				</div>
 				<!-- end section title -->
+				<div class="noresult-1" *ngIf="libraryMovie.length==0">
+					<img class="noresult" src="assets/not-found.png"/>
+					<p style="color: white; text-align: center;">No Result Found</p>
+				</div>
+				
 
 				<!-- card -->
-				<div class="col-6 col-sm-4 col-lg-3 col-xl-2" *ngFor="let data of allMovieData">
+				<!-- <div *ngIf="libraryMovie.length!==0"> -->
+				<div class="col-6 col-sm-4 col-lg-3 col-xl-2" *ngFor="let data of libraryMovie">
 					<div class="card">
 						<div class="card__cover">
 							<img src="{{data.pagecover}}" alt="">
@@ -59,6 +65,7 @@
 						</div>
 					</div>
 				</div>
+			
 			</div>
 		</div>
 	</section>

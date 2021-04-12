@@ -1,10 +1,13 @@
 
 
-
+.toolbar{
+    height: 90px;
+    background-color: black;
+}
 
 .icon-1{
     position: absolute;
-    top: 38px;
+    top: 40px;
     left: 20px;
     z-index: 300;
     --background-color: rgba(255, 255, 255, 0.836);

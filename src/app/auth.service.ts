@@ -105,12 +105,12 @@ export class AuthService implements CanActivate {
     //   })
     // }
 
-    // SignOut() {
-    //     return this.ngFireAuth.auth.signOut().then(() => {
-    //         localStorage.removeItem('uid')
-    //         localStorage.removeItem('user')
-    //         this.router.navigate(['/welcome'])
+    SignOut() {
+        return this.ngFireAuth.signOut().then(() => {
+            localStorage.removeItem('uid')
+            localStorage.removeItem('user')
+            this.router.navigate(['/welcome'])
             
-    //     })
-    // }
+        })
+    }
 }

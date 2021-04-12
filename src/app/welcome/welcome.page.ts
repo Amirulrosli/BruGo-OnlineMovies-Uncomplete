@@ -4,6 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
+import Swal from 'sweetalert2';
 import { UserService } from '../user.sevice';
 
 @Component({
@@ -57,12 +58,27 @@ export class WelcomePage implements OnInit {
     this.router.navigate(['/register'])
   }
 
+  showHideLoader(){
+
+    this.loading.create({  
+      message: 'loading',  
+      duration: 2000  
+    }).then((res) => {   
+      res.present();  
+    res.onDidDismiss().then((dis) => {  
+      console.log('Loading dismissed! after four Seconds');  
+    });  
+  });  
+
+  }
+
   async Login(){
+
+    this.showHideLoader();
+    
     try{
       const email = this.email;
       const password = this.password;
-
-      console.log(email+" "+password)
       const res = await this.auth.signInWithEmailAndPassword(email,password)
       .then(async (res)=> {
 
@@ -75,23 +91,29 @@ export class WelcomePage implements OnInit {
               email: email,
               uid: res.user.uid
             })
+
+            localStorage.setItem('uid',res.user.uid);
+
           }
-  
-          this.showAlert("Login Successful", "Welcome back "+email)
+          Swal.fire('Login Successful','Welcome Back,'+email,'success')
+          
           this.router.navigate(['/tabs/home'])
 
         },error=> {
-          this.showAlert("Login Failed","Invalid email or password, Please try again")
+          Swal.fire('Login Failed','Invalid Email or Password','error')
+          
         })
 
       
       },error=> {
         console.log(error)
-        this.showAlert("Login Failed","Please Check and Try Again!")
+        Swal.fire('Login Failed','Invalid Email or Password','error')
+       
         return;
       })
     } catch (error){
-      this.showAlert("Login Failed","Please Check and Try Again!")
+      Swal.fire('Login Failed','Invalid Email or Password','error')
+   
       return;
       console.log(error)
     }

@@ -1,14 +1,19 @@
+<ion-header>
 
-
-<ion-content>
-
-
+	<div class="toolbar">
 		<div class="icon-1" style="background:white;">
 			<ion-icon (click)="back()" class="arrow" name="arrow-back"></ion-icon>
 		</div>
 
+	</div>
+
+</ion-header>
+
+<ion-content>
+
+	
   
-  <section class="section details">
+  <section style="margin-top: -20px;" class="section details">
 		<!-- details background -->
 		<img class="details__bg" src="{{homecover}}"/>
 		<!-- end details background -->
@@ -28,7 +33,7 @@
 						<div class="row">
 							<!-- card cover -->
 							<div class="col-12 col-sm-4 col-md-4 col-lg-3 col-xl-3">
-								<div class="card__cover">
+								<div style="width: 200px;" class="card__cover">
 									<img src="{{pagecover}}" alt="" >
 								</div>
 							</div>
@@ -324,7 +329,7 @@
 			<ion-button (click)="goToMovie()" style="color: white;" class="newPlay">
 				Play
 			</ion-button>
-			<ion-icon class="add" name="duplicate-outline"></ion-icon>
+			<ion-icon (click)="addToLibrary()" class="add" name="duplicate-outline"></ion-icon>
 
 	</ion-toolbar>
 </ion-footer>
